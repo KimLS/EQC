@@ -100,3 +100,13 @@ void PatchManager::UnregisterPatch() {
 		patch->Unregister();
 	}
 }
+
+Patch *PatchManager::GetCurrentPatch() {
+	HANDLE h = GetModuleHandle(nullptr);
+	if(patches_.count(h) == 0) {
+		return nullptr;
+	}
+
+	auto &patch = patches_.at(h);
+	return patch.get();
+}

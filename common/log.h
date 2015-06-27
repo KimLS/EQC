@@ -1,5 +1,5 @@
-#ifndef EQC_LOG_H
-#define EQC_LOG_H
+#ifndef EQC_COMMON_LOG_H
+#define EQC_COMMON_LOG_H
 
 #include <string>
 #include <stdio.h>

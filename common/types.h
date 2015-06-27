@@ -1,5 +1,5 @@
-#ifndef EQEMU_TYPES
-#define EQEMU_TYPES
+#ifndef EQC_COMMON_TYPES_H
+#define EQC_COMMON_TYPES_H
 
 #include <stdint.h>
 typedef uint8_t uchar;

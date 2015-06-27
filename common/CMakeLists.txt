@@ -2,14 +2,18 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 SET(common_sources
 	crc32.cpp
+	file_verify.cpp
 	log.cpp
+	logical_packet.cpp
 	safe_write.cpp
 	string_util.cpp
 )
 
 SET(common_headers
 	crc32.h
+	file_verify.h
 	log.h
+	logical_packet.h
 	safe_write.h
 	string_util.h
 	types.h

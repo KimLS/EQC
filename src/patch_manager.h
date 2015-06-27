@@ -1,5 +1,5 @@
-#ifndef EQC_PATCH_MANAGER
-#define EQC_PATCH_MANAGER
+#ifndef EQC_SRC_PATCH_MANAGER_H
+#define EQC_SRC_PATCH_MANAGER_H
 
 #include <map>
 #include <memory>
@@ -19,6 +19,8 @@ public:
 		static PatchManager inst;
 		return inst;
 	}
+
+	Patch *GetCurrentPatch();
 private:
 	PatchManager() { }
 	PatchManager(const PatchManager&);

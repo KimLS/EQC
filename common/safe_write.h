@@ -1,5 +1,5 @@
-#ifndef __MOD_SAFE_WRITE_H
-#define __MOD_SAFE_WRITE_H
+#ifndef EQC_COMMON_SAFE_WRITE_H
+#define EQC_COMMON_SAFE_WRITE_H
 
 void SafeWrite8(uint32_t addr, uint8_t data);
 void SafeWrite16(uint32_t addr, uint16_t data);

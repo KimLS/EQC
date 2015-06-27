@@ -1,5 +1,5 @@
-#ifndef CRC32_H
-#define CRC32_H
+#ifndef EQC_COMMON_CRC32_H
+#define EQC_COMMON_CRC32_H
 #include "types.h"
 
 class CRC32 {

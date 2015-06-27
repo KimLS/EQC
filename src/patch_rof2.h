@@ -1,5 +1,5 @@
-#ifndef EQC_PATCH_ROF2
-#define EQC_PATCH_ROF2
+#ifndef EQC_SRC_PATCH_ROF2_H
+#define EQC_SRC_PATCH_ROF2_H
 
 #include "patch.h"
 
@@ -11,6 +11,7 @@ public:
 	
 	virtual void Register();
 	virtual void Unregister();
+	virtual void OnEnterWorld(HWND *hWnd);
 };
 
 #endif

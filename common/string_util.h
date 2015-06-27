@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef _STRINGUTIL_H_
-#define _STRINGUTIL_H_
+#ifndef EQC_COMMON_STRING_UTIL_H
+#define EQC_COMMON_STRING_UTIL_H
 
 #include <sstream>
 #include <string.h>

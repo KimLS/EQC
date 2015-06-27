@@ -6,17 +6,24 @@ SET(mod_sources
 	patch_manager.cpp
 	patch_null.cpp
 	patch_rof2.cpp
+	patch_rof2_hooks.cpp
 	patch_sod.cpp
+	patch_sod_hooks.cpp
 	patch_titanium.cpp
 	patch_uf.cpp
 )
 
 SET(mod_headers
+	eqgame_functions.h
 	patch.h
 	patch_manager.h
 	patch_null.h
 	patch_rof2.h
+	patch_rof2_eqgame.h
+	patch_rof2_hooks.h
 	patch_sod.h
+	patch_sod_eqgame.h
+	patch_sod_hooks.h
 	patch_titanium.h
 	patch_uf.h
 )
