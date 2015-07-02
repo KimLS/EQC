@@ -34,7 +34,11 @@ void MakeDirectory(const std::string &directory_name)
 Log::Log() {
 	f_ = nullptr;
 	enabled_[Status] = true;
+#ifdef _DEBUG
 	enabled_[Debug] = true;
+#else
+	enabled_[Debug] = false;
+#endif
 	enabled_[Error] = true;
 }
 
@@ -61,6 +65,34 @@ void Log::DisableLogType(Type t) {
 }
 
 void Log::Write(Type t, std::string msg) {
+	if(t >= MaxLogType) {
+		return;
+	}
+
+	if(!enabled_[t]) {
+		return;
+	}
+
+	MakeDirectory("logs/");
+
+	if(!f_) {
+		f_ = fopen("logs/c_dbg.log", "w");
+		if(!f_) {
+			return;
+		}
+	}
+
+	char time_stamp[80];
+	SetCurrentTimeStamp(time_stamp);
+
+	std::string time_string = time_stamp;
+	std::string out_string = time_string + std::string(" ") + msg;
+
+	fprintf(f_, "%s\n", out_string.c_str());
+	fflush(f_);
+}
+
+void Log::Write(Type t, const char *msg) {
 	if(t >= MaxLogType) {
 		return;
 	}

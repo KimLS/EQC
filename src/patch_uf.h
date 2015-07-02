@@ -11,7 +11,8 @@ public:
 	
 	virtual void Register();
 	virtual void Unregister();
-	virtual void OnEnterWorld(HWND *hWnd) { }
+
+	virtual void DisplayChat(int color, std::string msg);
 };
 
 #endif

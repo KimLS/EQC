@@ -28,6 +28,8 @@
 	#include <stdio.h>
 #endif
 
+#include <algorithm>
+
 #ifndef va_copy
 	#define va_copy(d,s) ((d) = (s))
 #endif
@@ -394,6 +396,11 @@ std::string EscapeString(const char *src, size_t sz) {
 	}
 
 	return ret;
+}
+
+std::string ToLowerString(std::string s) {
+	std::transform(s.begin(), s.end(), s.begin(), ::tolower);
+	return s;
 }
 
 bool isAlphaNumeric(const char *text)

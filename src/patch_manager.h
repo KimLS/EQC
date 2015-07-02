@@ -20,13 +20,13 @@ public:
 		return inst;
 	}
 
-	Patch *GetCurrentPatch();
+	Patch *GetPatch();
 private:
 	PatchManager() { }
 	PatchManager(const PatchManager&);
 	PatchManager& operator=(const PatchManager&);
 
-	std::map<void*, std::unique_ptr<Patch>> patches_;
+	std::unique_ptr<Patch> patch_;
 };
 
 #endif

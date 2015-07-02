@@ -15,16 +15,24 @@
 
 EQVar(base_address, DWORD, GetModuleHandle(NULL));
 
-//Functions
-//Enter Zone
+EQAddr(Game__RegisterZone, 0x6939D0);
+EQFunc(Game__RegisterZone);
+
+EQAddr(Game__DisplayChat, 0x4DCD60);
+EQFunc(Game__DisplayChat);
+
+//Player
 EQAddr(Player__EnterZone, 0x4F2420);
 EQFunc(Player__EnterZone);
 
-//EQAddr(Player__UDPConnection, 0xDD25AC);
-//EQVar(Player__UDPConnection, void**, 0xDD25AC);
+EQVar(Player__UDPConnection, void**, 0xA42580);
+EQAddr(Player__SendReliableMessage, 0x66D250);
+EQFunc(Player__SendReliableMessage);
 
-//EQAddr(Player__SendReliableMessage, 0x8C51F0);
-//EQFunc(Player__SendReliableMessage);
+EQAddr(Player__CommandHandler, 0x4DD7C0);
+EQFunc(Player__CommandHandler);
 
+EQAddr(Game__OnMsgRecv, 0x44ABB0);
+EQFunc(Game__OnMsgRecv);
 
 #endif

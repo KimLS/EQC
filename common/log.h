@@ -20,6 +20,7 @@ public:
 	void EnableLogType(Type t);
 	void DisableLogType(Type t);
 	void Write(Type t, std::string msg);
+	void Write(Type t, const char *msg);
 
 	static Log& Get() {
 		static Log inst;

@@ -11,7 +11,9 @@ public:
 	
 	virtual void Register();
 	virtual void Unregister();
-	virtual void OnEnterWorld(HWND *hWnd);
+private:
+	bool zones_set2_;
+
 };
 
 #endif

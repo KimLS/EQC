@@ -15,15 +15,14 @@
 #include "patch_uf.h"
 
 void PatchManager::LoadPatch() {
-	HANDLE h = GetModuleHandle(nullptr);
-	if(patches_.count(h) > 0) {
+	if(patch_ > 0) {
 		return;
 	}
 
 	FILE *f = fopen("eqgame.exe", "rb");
 
 	if(!f) {
-		patches_[h] = std::unique_ptr<Patch>(new PatchNull());
+		patch_ = std::unique_ptr<Patch>(new PatchNull());
 		return;
 	}
 
@@ -36,7 +35,7 @@ void PatchManager::LoadPatch() {
 	fclose(f);
 
 	if(result != size) {
-		patches_[h] = std::unique_ptr<Patch>(new PatchNull());
+		patch_ = std::unique_ptr<Patch>(new PatchNull());
 		return;
 	}
 
@@ -45,68 +44,54 @@ void PatchManager::LoadPatch() {
 	Log::Get().Write(Log::Status, "Load patch...");
 
 	switch(crc) {
-	case 1655895739: // SoD
-		patches_[h] = std::unique_ptr<Patch>(new PatchSoD());
+	case 1655895739: { // SoD
+		patch_ = std::unique_ptr<Patch>(new PatchSoD());
 		Log::Get().Write(Log::Status, "Patch loaded as SoD");
 		break;
-	case 1204195887: // RoF2
-		patches_[h] = std::unique_ptr<Patch>(new PatchRoF2());
+	}
+	case 1204195887: { // RoF2
+		patch_ = std::unique_ptr<Patch>(new PatchRoF2());
 		Log::Get().Write(Log::Status, "Patch loaded as RoF2");
 		break;
-	case 890011777: // UF
-		patches_[h] = std::unique_ptr<Patch>(new PatchUF());
+	}
+	case 890011777: { // UF
+		patch_ = std::unique_ptr<Patch>(new PatchUF());
 		Log::Get().Write(Log::Status, "Patch loaded as UF");
 		break;
-	case 2652224660: // Titanium
-		patches_[h] = std::unique_ptr<Patch>(new PatchTitanium());
+	}
+	case 2652224660: { // Titanium
+		patch_ = std::unique_ptr<Patch>(new PatchTitanium());
 		Log::Get().Write(Log::Status, "Patch loaded as Titanium");
 		break;
-	default:
-		patches_[h] = std::unique_ptr<Patch>(new PatchNull());
+	}
+	default: {
+		patch_ = std::unique_ptr<Patch>(new PatchNull());
 		Log::Get().Write(Log::Status, "Patch loaded as Null");
 		break;
+	}
 	}
 }
 
 void PatchManager::RegisterPatch() {
-	HANDLE h = GetModuleHandle(nullptr);
-	if(patches_.count(h) == 0) {
+	if(!patch_) {
 		return;
 	}
 
-	auto &patch = patches_.at(h);
-	if(patch) {
-		patch->Register();
-	}
+	patch_->Register();
 }
 
 void PatchManager::UnloadPatch() {
-	HANDLE h = GetModuleHandle(nullptr);
-	if(patches_.count(h) > 0) {
-		return;
-	}
-
-	patches_.erase(h);
+	patch_ = nullptr;
 }
 
 void PatchManager::UnregisterPatch() {
-	HANDLE h = GetModuleHandle(nullptr);
-	if(patches_.count(h) == 0) {
+	if(!patch_) {
 		return;
 	}
 
-	auto &patch = patches_.at(h);
-	if(patch) {
-		patch->Unregister();
-	}
+	patch_->Unregister();
 }
 
-Patch *PatchManager::GetCurrentPatch() {
-	HANDLE h = GetModuleHandle(nullptr);
-	if(patches_.count(h) == 0) {
-		return nullptr;
-	}
-
-	auto &patch = patches_.at(h);
-	return patch.get();
+Patch *PatchManager::GetPatch() {
+	return patch_.get();
 }

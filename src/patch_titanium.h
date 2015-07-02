@@ -11,7 +11,6 @@ public:
 	
 	virtual void Register();
 	virtual void Unregister();
-	virtual void OnEnterWorld(HWND *hWnd) { }
 };
 
 #endif

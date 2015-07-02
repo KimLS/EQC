@@ -41,6 +41,7 @@ int MakeAnyLenString(char** ret, const char* format, ...);
 
 std::string EscapeString(const char *src, size_t sz);
 std::string EscapeString(const std::string &s);
+std::string ToLowerString(std::string s);
 
 std::vector<std::string> SplitString(const std::string &s, char delim);
 

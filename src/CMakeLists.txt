@@ -3,6 +3,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 SET(mod_sources
 	dinput8.def
 	main.cpp
+	patch.cpp
+	patch_command.cpp
 	patch_manager.cpp
 	patch_null.cpp
 	patch_rof2.cpp
@@ -10,10 +12,14 @@ SET(mod_sources
 	patch_sod.cpp
 	patch_sod_hooks.cpp
 	patch_titanium.cpp
+	patch_titanium_hooks.cpp
 	patch_uf.cpp
+	patch_uf_hooks.cpp
+	patch_zone.cpp
 )
 
 SET(mod_headers
+	command_data.h
 	eqgame_functions.h
 	patch.h
 	patch_manager.h
@@ -25,7 +31,12 @@ SET(mod_headers
 	patch_sod_eqgame.h
 	patch_sod_hooks.h
 	patch_titanium.h
+	patch_titanium_eqgame.h
+	patch_titanium_hooks.h
 	patch_uf.h
+	patch_uf_eqgame.h
+	patch_uf_hooks.h
+	zone_data.h
 )
 
 INCLUDE_DIRECTORIES("${DETOURS_INCLUDE_DIR}")

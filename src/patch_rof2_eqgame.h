@@ -21,14 +21,21 @@ EQAddr(Game__RegisterZone2, 0x7DC430);
 EQFunc(Game__RegisterZone);
 EQFunc(Game__RegisterZone2);
 
+EQAddr(Game__DisplayChat, 0x51F1A0);
+EQFunc(Game__DisplayChat);
+
 //Player
 EQAddr(Player__EnterZone, 0x531F90);
 EQFunc(Player__EnterZone);
 
-EQAddr(Player__UDPConnection, 0xDD25AC);
 EQVar(Player__UDPConnection, void**, 0xDD25AC);
-
 EQAddr(Player__SendReliableMessage, 0x8C51F0);
 EQFunc(Player__SendReliableMessage);
+
+EQAddr(Player__CommandHandler, 0x51FCE0);
+EQFunc(Player__CommandHandler);
+
+EQAddr(Game__OnMsgRecv, 0x4623E0);
+EQFunc(Game__OnMsgRecv);
 
 #endif
