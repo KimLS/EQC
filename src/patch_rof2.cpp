@@ -11,17 +11,30 @@
 
 void PatchRoF2::Register() {
 	Log::Get().Write(Log::Status, "Registering patch RoF2");
-	DetourAttach(&(PVOID&)RoF2Player__EnterZone, RoF2PlayerEnterZoneHook);
+#ifdef EQC_ENABLE_COMMANDS
+	DetourAttach(&(PVOID&)RoF2Player__CommandHandler, RoF2PlayerCommandHandlerHook);
+#endif
+
 	DetourAttach(&(PVOID&)RoF2Game__RegisterZone, RoF2GameRegisterZoneHook);
 	DetourAttach(&(PVOID&)RoF2Game__RegisterZone2, RoF2GameRegisterZone2Hook);
+	DetourAttach(&(PVOID&)RoF2Game__RegisterModel, RoF2GameRegisterModelHook);
 	DetourAttach(&(PVOID&)RoF2Game__OnMsgRecv, RoF2GameOnMsgRecvHook);
+	DetourAttach(&(PVOID&)RoF2Game__DisplayLoadingMessage, RoF2GameDisplayLoadingMessageHook);
 }
 
 void PatchRoF2::Unregister() {
 	Log::Get().Write(Log::Status, "Unregistering patch RoF2");
-	DetourDetach(&(PVOID&)RoF2Player__EnterZone, RoF2PlayerEnterZoneHook);
+#ifdef EQC_ENABLE_COMMANDS
+	DetourDetach(&(PVOID&)RoF2Player__CommandHandler, RoF2PlayerCommandHandlerHook);
+#endif
+
 	DetourDetach(&(PVOID&)RoF2Game__RegisterZone, RoF2GameRegisterZoneHook);
 	DetourDetach(&(PVOID&)RoF2Game__RegisterZone2, RoF2GameRegisterZone2Hook);
+	DetourDetach(&(PVOID&)RoF2Game__RegisterModel, RoF2GameRegisterModelHook);
 	DetourDetach(&(PVOID&)RoF2Game__OnMsgRecv, RoF2GameOnMsgRecvHook);
+	DetourDetach(&(PVOID&)RoF2Game__DisplayLoadingMessage, RoF2GameDisplayLoadingMessageHook);
 }
 
+void PatchRoF2::DisplayChat(int color, std::string msg) {
+	RoF2Game__DisplayChat(msg.c_str(), color, true, true);
+}

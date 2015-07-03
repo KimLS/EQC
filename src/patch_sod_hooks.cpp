@@ -10,9 +10,19 @@ int __fastcall SoDGameRegisterZoneHook(void *self, void* unk, int expansion, int
 	return patch->OnRegisterZone(SoDGame__RegisterZone, 479, self, expansion, zone_id, short_name, long_name, string_id, flag, g, h, i);
 }
 
+void __fastcall SoDGameRegisterModelHook(void *self, void* unk, int race_id, int gender, const char *name, int unk1, int unk2) {
+	auto patch = PatchManager::Get().GetPatch();
+	patch->OnRegisterModel(SoDGame__RegisterModel, self, race_id, gender, name, unk1, unk2);
+}
+
 int __stdcall SoDGameOnMsgRecvHook(void *self, const char *data, int sz) {
 	auto patch = PatchManager::Get().GetPatch();
 	return patch->OnMsgRecv(SoDGame__OnMsgRecv, self, data, sz);
+}
+
+int __fastcall SoDGameDisplayLoadingMessageHook(void *self, void *unk, int count, const char *msg) {
+	auto patch = PatchManager::Get().GetPatch();
+	return patch->OnLoadingMessage(SoDGame__DisplayLoadingMessage, SoD_aGame__LoadingMessageArray, 69, self, count, msg);
 }
 
 int __fastcall SoDPlayerCommandHandlerHook(void *self, void *unk, DWORD pp, const char *command) {

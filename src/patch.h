@@ -12,7 +12,7 @@
 class Patch
 {
 public:
-	Patch() { command_data_loaded_ = false; }
+	Patch() { command_data_loaded_ = false; loading_messages_loaded_ = false; register_models_loaded_ = false; register_models_bypass_ = false; }
 	virtual ~Patch() { }
 	
 	virtual void Register() = 0;
@@ -25,8 +25,10 @@ public:
 	int OnRegisterZone(pGame__RegisterZone reg, int max_zone_id, void *self, int expansion, int zone_id, char *short_name, char *long_name, int string_id, int flag, int g, int h, int i);
 	int OnRegisterZoneNew(pGame__RegisterZone reg, void *self, int expansion, int zone_id, char *short_name, char *long_name, int string_id, int flag, int g, int h, int i);
 	int OnRegisterZoneNew2(pGame__RegisterZone2 reg, int max_zone_id, void *self, int expansion, int zone_id, char *short_name, char *long_name, int string_id, int flag, int g, int h, int i);
+	void OnRegisterModel(pGame__RegisterModel rm, void *self, int race_id, int gender, const char *name, int unk1, int unk2);
 	int OnCommand(pPlayer__CommandHandler ch, void *self, DWORD pp, const char *command);
 	int OnMsgRecv(pGame__OnMsgRecv mr, void *self, const char *data, int sz);
+	int OnLoadingMessage(pGame__DisplayLoadingMessage lm, DWORD array_offset, int array_size, void* self, int a, char const *msg);
 protected:
 	void LoadZoneData();
 	std::map<int, ZoneDataEntry> zone_data_;
@@ -35,6 +37,9 @@ protected:
 	std::map<std::string, CommandAliasEntry> command_aliases_;
 	std::list<CommandEntry> command_list_;
 	bool command_data_loaded_;
+	bool loading_messages_loaded_;
+	bool register_models_loaded_;
+	bool register_models_bypass_;
 };
 
 #endif

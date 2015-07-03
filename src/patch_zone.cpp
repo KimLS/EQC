@@ -31,7 +31,7 @@ void Patch::LoadZoneData() {
 }
 
 int Patch::OnRegisterZone(pGame__RegisterZone reg, int max_zone_id, void *self, int expansion, int zone_id, char *short_name, char *long_name, int string_id, int flag, int g, int h, int i) {
-	//Log::Get().Write(Log::Debug, StringFormat("%i^%i^%s^%s^%i^%i^%i^%i^%i", expansion, zone_id, short_name, long_name, string_id, flag, g, h, i));
+	Log::Get().Write(Log::Debug, StringFormat("%i^%i^%s^%s^%i^%i^%i^%i^%i", expansion, zone_id, short_name, long_name, string_id, flag, g, h, i));
 
 	if(zone_id == 1) {
 		//load zone data
@@ -82,7 +82,7 @@ int Patch::OnRegisterZone(pGame__RegisterZone reg, int max_zone_id, void *self, 
 }
 
 int Patch::OnRegisterZoneNew(pGame__RegisterZone reg, void *self, int expansion, int zone_id, char *short_name, char *long_name, int string_id, int flag, int g, int h, int i) {
-	//Log::Get().Write(Log::Debug, StringFormat("%i^%i^%s^%s^%i^%i^%i^%i^%i", expansion, zone_id, short_name, long_name, string_id, flag, g, h, i));
+	Log::Get().Write(Log::Debug, StringFormat("%i^%i^%s^%s^%i^%i^%i^%i^%i", expansion, zone_id, short_name, long_name, string_id, flag, g, h, i));
 	
 	if(zone_id == 1) {
 		//load zone data

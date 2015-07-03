@@ -21,8 +21,18 @@ EQAddr(Game__RegisterZone2, 0x7DC430);
 EQFunc(Game__RegisterZone);
 EQFunc(Game__RegisterZone2);
 
+EQAddr(Game__RegisterModel, 0x50A440);
+EQFunc(Game__RegisterModel);
+
 EQAddr(Game__DisplayChat, 0x51F1A0);
 EQFunc(Game__DisplayChat);
+
+EQAddr(Game__OnMsgRecv, 0x4623E0);
+EQFunc(Game__OnMsgRecv);
+
+EQAddr(Game__DisplayLoadingMessage, 0x4A59A0);
+EQFunc(Game__DisplayLoadingMessage);
+EQAddr(Game__LoadingMessageArray, 0xAC6330); // size = 91
 
 //Player
 EQAddr(Player__EnterZone, 0x531F90);
@@ -34,8 +44,5 @@ EQFunc(Player__SendReliableMessage);
 
 EQAddr(Player__CommandHandler, 0x51FCE0);
 EQFunc(Player__CommandHandler);
-
-EQAddr(Game__OnMsgRecv, 0x4623E0);
-EQFunc(Game__OnMsgRecv);
 
 #endif

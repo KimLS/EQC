@@ -11,9 +11,8 @@ public:
 	
 	virtual void Register();
 	virtual void Unregister();
-private:
-	bool zones_set2_;
 
+	virtual void DisplayChat(int color, std::string msg);
 };
 
 #endif

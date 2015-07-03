@@ -11,6 +11,8 @@ public:
 	
 	virtual void Register();
 	virtual void Unregister();
+
+	virtual void DisplayChat(int color, std::string msg);
 };
 
 #endif

@@ -18,8 +18,21 @@ EQVar(base_address, DWORD, GetModuleHandle(NULL));
 EQAddr(Game__RegisterZone, 0x6939D0);
 EQFunc(Game__RegisterZone);
 
+EQAddr(Game__RegisterModel, 0x4CAF50);
+EQFunc(Game__RegisterModel);
+
 EQAddr(Game__DisplayChat, 0x4DCD60);
 EQFunc(Game__DisplayChat);
+
+EQAddr(Game__OnMsgRecv, 0x44ABB0);
+EQFunc(Game__OnMsgRecv);
+
+EQAddr(Game__TradeStackCheck1, 0x5CFB72);
+EQAddr(Game__TradeStackCheck2, 0x651F3A);
+
+EQAddr(Game__DisplayLoadingMessage, 0x47F6E0);
+EQFunc(Game__DisplayLoadingMessage);
+EQAddr(Game__LoadingMessageArray, 0x854930); // size = 69
 
 //Player
 EQAddr(Player__EnterZone, 0x4F2420);
@@ -31,8 +44,5 @@ EQFunc(Player__SendReliableMessage);
 
 EQAddr(Player__CommandHandler, 0x4DD7C0);
 EQFunc(Player__CommandHandler);
-
-EQAddr(Game__OnMsgRecv, 0x44ABB0);
-EQFunc(Game__OnMsgRecv);
 
 #endif

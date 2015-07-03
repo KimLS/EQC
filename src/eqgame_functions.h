@@ -4,8 +4,10 @@
 //Game
 typedef int(__thiscall *pGame__RegisterZone)(void*, int, int, const char*, const char*, int, int, int, int, int);
 typedef int(__thiscall *pGame__RegisterZone2)(void*, int, int, const char*, const char*, int, int, int, int, int);
+typedef int(__thiscall *pGame__RegisterModel)(void*, int, int, const char*, int, int);
 typedef void(__stdcall *pGame__DisplayChat)(const char *, int, bool, bool);
 typedef int(__stdcall *pGame__OnMsgRecv)(void*, const char*, int);
+typedef int(__thiscall *pGame__DisplayLoadingMessage)(void*, int, char const*);
 
 //Player
 typedef void(__thiscall *pPlayer__EnterZone)(void*, void*);
